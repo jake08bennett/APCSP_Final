@@ -10,7 +10,7 @@ sys.setdefaultencoding('utf-8')
 def flush():
 	sys.stdout.flush()
 
-print '---------Welcome to the 7 Wonders of the World distance calculator--------- \n \nWe calculate out your distance from anywhere in the USA to the seven wonders of the world \n \nWhen prompted please enter your Zip code followed by a comma and your 2 letter state acronym \n\nIn the format "80129, CO"\n \n Now please enter a Location: '
+print '---------Welcome to the 7 Wonders of the World distance calculator--------- \n \nWe calculate out your distance from anywhere in the world to the seven wonders of the world \n \nWhen prompted please enter your town followed by your country \n\nIn the format "Highlands Ranch USA"\n \nNow please enter a Location: '
 
 flush()
 
@@ -22,7 +22,7 @@ geolocator = Nominatim()
 
 location = geolocator.geocode(user_location)
 
-print('Your entered location: ' )
+print('\nYour entered location: ' )
 print(location.address)
 
 flush()
@@ -52,6 +52,31 @@ christ_the_redeemer_distance = (vincenty(user_coordinates, christ_the_redeemer).
 
 macchu_picchu = (20.6843, 88.5678)
 macchu_picchu_distance = (vincenty(user_coordinates, macchu_picchu).miles)
+
+all_values = [petra_distance, christ_the_redeemer_distance, macchu_picchu_distance, the_colosseum_distance, taj_mahal_distance, great_wall_of_china_distance, chichen_itza_distance]
+
+x = 1000000000000000000000000.001
+
+for i in all_values:
+	if i < x:
+		x = i
+	if x == petra_distance:
+		lowest_location = "Petra"
+	if x == great_wall_of_china_distance:
+		lowest_location = "Great Wall of China"
+	if x == the_colosseum_distance:
+		lowest_location = "Colosseum"
+	if x == christ_the_redeemer_distance:
+		lowest_location = "Christ the Redeemer"
+	if x == taj_mahal_distance:
+		lowest_location = "Taj Mahal"
+	if x == macchu_picchu_distance:
+		lowest_location = "Macchu Picchu"
+	if x == chichen_itza_distance:
+		lowest_location = "Chichen Itza"
+
+print "\nThe lowest value is", x, "miles, making the wonder closest to you the", lowest_location
+
 
 print '\nYour Distance from Petra is', petra_distance,  'miles.\n' 
 print 'Your Distance from Chichen Itza is', chichen_itza_distance, 'miles.\n'
