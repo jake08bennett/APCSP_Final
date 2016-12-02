@@ -31,26 +31,33 @@ user_coordinates = (location.latitude, location.longitude)
 
 #print(a)
 
-
-petra = (30.3285, 35.4444)
+petra_location = geolocator.geocode("Petra, Jordan")
+petra = (petra_location.latitude, petra_location.longitude)
 petra_distance = (vincenty(user_coordinates, petra).miles)
 
-chichen_itza = (20.6843, 88.5678)
+CI_location = geolocator.geocode("Chichen Itza, Mexico")
+chichen_itza = (CI_location.latitude, CI_location.longitude)
 chichen_itza_distance = (vincenty(user_coordinates, chichen_itza).miles)
 
-the_colosseum = (41.8902, 12.4922)
+TC_location = geolocator.geocode("The Colosseum, Italy")
+the_colosseum = (TC_location.latitude, TC_location.longitude)
 the_colosseum_distance = (vincenty(user_coordinates, the_colosseum).miles)
 
-great_wall_of_china = (40.4319, 116.5704)
+GWOC_location = geolocator.geocode("Christ the Redeemer, Brazil")
+great_wall_of_china = (GWOC_location.latitude, GWOC_location.longitude)
 great_wall_of_china_distance = (vincenty(user_coordinates, great_wall_of_china).miles)
 
-taj_mahal = (27.1750, 78.0422)
+TM_location = geolocator.geocode("Taj Mahal, India")
+taj_mahal = (TM_location.latitude, TM_location.longitude)
 taj_mahal_distance = (vincenty(user_coordinates, taj_mahal).miles)
 
-christ_the_redeemer = (22.9519, 43.2105)
+
+CTR_location = geolocator.geocode("Christ the Redeemer, Brazil")
+christ_the_redeemer = (CTR_location.latitude, CTR_location.longitude)
 christ_the_redeemer_distance = (vincenty(user_coordinates, christ_the_redeemer).miles)
 
-macchu_picchu = (20.6843, 88.5678)
+MP_location = geolocator.geocode("Macchu Picchu, Peru")
+macchu_picchu = (MP_location.latitude, MP_location.longitude)
 macchu_picchu_distance = (vincenty(user_coordinates, macchu_picchu).miles)
 
 all_values = [petra_distance, christ_the_redeemer_distance, macchu_picchu_distance, the_colosseum_distance, taj_mahal_distance, great_wall_of_china_distance, chichen_itza_distance]
@@ -76,6 +83,13 @@ for i in all_values:
 		lowest_location = "Chichen Itza"
 
 print "\nThe lowest value is", x, "miles, making the wonder closest to you the", lowest_location
+
+
+flight_time = x / 570  
+
+print "\nThe average amount of time it would take you to fly to", lowest_location, "is", flight_time, "hours. \n\n ---------Happy Travels!---------\n"
+
+flush()
 
 
 print '\nYour Distance from Petra is', petra_distance,  'miles.\n' 
