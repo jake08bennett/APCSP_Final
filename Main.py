@@ -14,14 +14,14 @@ system_running = True
 
 while system_running == True:
 
-	print '---------Welcome to the 7 Wonders of the World distance calculator--------- \n \nWe calculate out your distance from anywhere in the world to the seven wonders of the world \n \n Would you like to enter a location? type Y or N'
+	print '\n---------Welcome to the 7 Wonders of the World distance calculator--------- \n \nWe calculate out your distance from anywhere in the world to the seven wonders of the world \n \nWould you like to enter a location? type Y or N'
 
 	flush()
 
-	enter_location = raw_input()
+	enter_location = raw_input().upper()
 	if enter_location == "N":
 
-		print "Thanks For Using Our Program! \n \n ----Goodbye!----"
+		print "Thanks For Using Our Program! \n \n----Goodbye!----"
 		system_running = False
 
 	elif enter_location == "Y":
@@ -50,7 +50,7 @@ while system_running == True:
 			user_coordinates = (location.latitude, location.longitude)
 
 			#print(a)
-
+			
 			petra_location = geolocator.geocode("Petra, Jordan")
 			petra = (petra_location.latitude, petra_location.longitude)
 			petra_distance = (vincenty(user_coordinates, petra).miles)
@@ -79,6 +79,9 @@ while system_running == True:
 			MP_location = geolocator.geocode("Macchu Picchu, Peru")
 			macchu_picchu = (MP_location.latitude, MP_location.longitude)
 			macchu_picchu_distance = (vincenty(user_coordinates, macchu_picchu).miles)
+				
+
+			
 
 			all_values = [petra_distance, christ_the_redeemer_distance, macchu_picchu_distance, the_colosseum_distance, taj_mahal_distance, great_wall_of_china_distance, chichen_itza_distance]
 
@@ -102,34 +105,36 @@ while system_running == True:
 				if x == chichen_itza_distance:
 					lowest_location = "Chichen Itza"
 
-			print "\nThe lowest value is", x, "miles, making the wonder closest to you the", lowest_location
+			print "\nThe lowest value is", round(x,2), "miles, making the wonder closest to you the", lowest_location
+
+			def calculate_flight_time(x):
+				flight_time = x / 570  
+
+				print "\nThe average amount of time it would take you to fly to", lowest_location, "is", round(flight_time,2), "hours. \n\n ---------Happy Travels!---------\n"
+
+				flush()
+
+			calculate_flight_time(x)
 
 
-			flight_time = x / 570  
-
-			print "\nThe average amount of time it would take you to fly to", lowest_location, "is", flight_time, "hours. \n\n ---------Happy Travels!---------\n"
-
-			flush()
-
-
-			print '\nYour Distance from Petra is', petra_distance,  'miles.\n' 
-			print 'Your Distance from Chichen Itza is', chichen_itza_distance, 'miles.\n'
-			print 'Your Distance from The Colosseum is', the_colosseum_distance, 'miles.\n'
-			print 'Your Distance from The Great Wall of China is', great_wall_of_china_distance, 'miles.\n'
-			print 'Your Distance from The Taj Mahal is', taj_mahal_distance, 'miles.\n'
-			print 'Your Distance from Christ the Redeemer is', christ_the_redeemer_distance, 'miles.\n'
-			print 'Your Distance from Macchu Picchu is', macchu_picchu_distance, 'miles.\n'
+			print '\nYour Distance from Petra is', round(petra_distance, 2),  'miles.\n' 
+			print 'Your Distance from Chichen Itza is', round(chichen_itza_distance, 2), 'miles.\n'
+			print 'Your Distance from The Colosseum is', round(the_colosseum_distance, 2), 'miles.\n'
+			print 'Your Distance from The Great Wall of China is', round(great_wall_of_china_distance, 2), 'miles.\n'
+			print 'Your Distance from The Taj Mahal is', round(taj_mahal_distance, 2), 'miles.\n'
+			print 'Your Distance from Christ the Redeemer is', round(christ_the_redeemer_distance, 2), 'miles.\n'
+			print 'Your Distance from Macchu Picchu is', round(macchu_picchu_distance, 2), 'miles.\n'
 
 			flush()
 
 			next_location = True
 
 			while next_location == True:
-				print 'Would you like to enter another location? Enter Y or N'
+				print '\n\nWould you like to enter another location? Enter Y or N'
 
 				flush()
 
-				still_running = raw_input()
+				still_running = raw_input().upper()
 
 				if still_running == "N":
 					running = False
@@ -140,62 +145,12 @@ while system_running == True:
 					next_location = False
 
 				else:
-					print "You didnt give a valid answer"
+					print "\n\nYou didnt give a valid answer"
 					next_location = True
 
 	else:
-		print "You did not give a valid answer"
+		print "\n\nYou did not give a valid answer"
 		system_running = True
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#geolocator = Nominatim()
-# location = geolocator.geocode("Newport Rhode Island")
-# print(location.address)
-# a = (location.latitude, location.longitude)
-
-# location2 = geolocator.geocode("Cleveland Ohio")
-# print(location2.address)
-# b = (location2.latitude, location2.longitude)
-
-# newport_ri = a
-# cleveland_oh = b
-# print(vincenty(newport_ri, cleveland_oh).miles)
