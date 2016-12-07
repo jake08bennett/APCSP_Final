@@ -110,7 +110,12 @@ while system_running == True:
 			def calculate_flight_time(x):
 				flight_time = x / 570  
 
-				print "\nThe average amount of time it would take you to fly to", lowest_location, "is", round(flight_time,2), "hours. \n\n ---------Happy Travels!---------\n"
+				
+				if flight_time > 2.5:
+					print "\nThe average amount of time it would take you to fly to", lowest_location, "is", round(flight_time,2), "hours. \n\n ---------Happy Travels!---------\n"
+				if flight_time < 2.5:
+					print "\nYou are within driving distance to", lowest_location, ". Take a day and go explore one of the New 7 Wonders of the World. Happy Travels!"
+
 
 				flush()
 
@@ -151,6 +156,3 @@ while system_running == True:
 	else:
 		print "\n\nYou did not give a valid answer"
 		system_running = True
-
-
-
